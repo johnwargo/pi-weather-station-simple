@@ -5,9 +5,9 @@ Pi Weather Station
 
 This is a Raspberry Pi project that measures temperature and humidity and pressure then uploads the data to a Weather Underground weather station. This is a complementary project to [https://github.com/johnwargo/pi_weather_station](https://github.com/johnwargo/pi_weather_station) that performs the same function, only uses the Astro Pi Sense HAT for measurement instead.  I added this project in case Makers wanted to implement the project, but didn't want the added expense of the Sense HAT.   
 
-https://learn.adafruit.com/dht/overview
-https://github.com/adafruit/Adafruit_Python_DHT
-https://learn.adafruit.com/dht-humidity-sensing-on-raspberry-pi-with-gdocs-logging/overview
++ https://learn.adafruit.com/dht/overview
++ https://github.com/adafruit/Adafruit_Python_DHT
++ https://learn.adafruit.com/dht-humidity-sensing-on-raspberry-pi-with-gdocs-logging/overview
 
 
  
