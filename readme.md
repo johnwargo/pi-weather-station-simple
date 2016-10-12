@@ -1,12 +1,18 @@
 Pi Weather Station
 ==================
 
-`STILL a WORK IN PROGRESS`
+`STILL very much A WORK IN PROGRESS`
 
 This is a Raspberry Pi project that measures temperature and humidity and pressure then uploads the data to a Weather Underground weather station. This is a complementary project to [https://github.com/johnwargo/pi_weather_station](https://github.com/johnwargo/pi_weather_station) that performs the same function, only uses the Astro Pi Sense HAT for measurement instead.  I added this project in case Makers wanted to implement the project, but didn't want the added expense of the Sense HAT.   
+
+https://learn.adafruit.com/dht/overview
+https://github.com/adafruit/Adafruit_Python_DHT
+https://learn.adafruit.com/dht-humidity-sensing-on-raspberry-pi-with-gdocs-logging/overview
+
+
  
 Required Components
-===================
+-----------------------------
 
 This project is very easy to assemble, all you need is the following 4 parts, and they all connect together:
 
@@ -15,7 +21,7 @@ This project is very easy to assemble, all you need is the following 4 parts, an
 + Raspberry Pi Power Adapter. I used this one from [Amazon](http://amzn.to/29VVzT4). 
 
 Project Files
-=============
+-----------------------------
 
 The project folder contains several files and one folder: 
 
@@ -26,17 +32,17 @@ The project folder contains several files and one folder:
 + `weather_station.py` - The main data collection application for this project. You'll run this application to read the DHT22 and post the collected data.   
 
 Hardware Assembly
-=================
+-----------------------------
 
 
 
 Weather Underground Setup
-=========================
+-----------------------------
 
 Weather Underground (WU) is a public weather service now owned by the Weather Channel; it's most well-known for enabling everyday people to setup weather stations and upload local weather data into the WU weatherbase for public consumption. Point your browser of choice to [https://www.wunderground.com/weatherstation/overview.asp](https://www.wunderground.com/weatherstation/overview.asp) to setup your weather station. Once you complete the setup, WU will generate a station ID and access key you'll need to access the service from the project. Be sure to capture those values, you'll need them later.
 
-Installation
-============
+Software Installation
+-----------------------------
 
 Download the Raspbian image from [raspberrypi.org](https://www.raspberrypi.org/downloads/raspbian/) then burn it to an SD card using the instructions found at [Installing Operating System Images](https://www.raspberrypi.org/documentation/installation/installing-images/README.md).
 
@@ -47,21 +53,19 @@ Next, open a terminal window and execute the following commands:
 	sudo apt-get update
 	sudo apt-get upgrade
 
-Those two commands will update the Pi's software repository with the latest information then upgrade existing code in the Raspbian image for the latest versions.
+Those two commands will update the Pi's software repository with the latest information then upgrade the existing code in the Raspbian image to their latest versions.
 
-Next, you'll need to install support packages for the Sense HAT. In the same terminal window, execute the following command:
+Next, you'll need to install some support libraries used to install the Adafruit's DHT22 library. In the same terminal window, execute the following command:
 
-For all platforms (Raspberry Pi and Beaglebone Black) make sure your system is able to compile Python extensions. On Raspbian or Beaglebone Black's Debian/Ubuntu image you can ensure your system is ready by executing:
-
-	sudo apt-get update
 	sudo apt-get install build-essential python-dev
 
-Install the library by downloading it from [https://github.com/adafruit/Adafruit_Python_DHT](https://github.com/adafruit/Adafruit_Python_DHT) then unzipping the archive, and executing:
+Now, download and install the Adafruit DHT Python library. Point the Pi's web browser to [https://github.com/adafruit/Adafruit_Python_DHT](https://github.com/adafruit/Adafruit_Python_DHT) and click the download link on the right side of the page. Unzip the archive to the folder where you downloaded it then execute the following command in a terminal window:
 
-	sudo python setup.py install
-	   
-Installation
-============
+	python setup.py install
+
+
+Project Software Installation
+-----------------------------
 
 Make a folder in the pi user's home folder. to do this, open a terminal window and enter the following command:
  
@@ -76,7 +80,7 @@ Copy the project files into the folder that was just created.
 Configuration
 =============
 
-In order to upload weather data to the Weather Underground service, the application needs access to the station ID and station access key you created earlier in this setup process. Open the project's `config.py` in your editor of choice and populate the `STATION_ID` and `STATION_KEY` fields with the appropriate values from your Weather Underground Weather Station: 
+In order to upload weather data to the Weather Underground service, the application needs the station ID and station access key you created earlier in this setup process. Open the project's `config.py` in your editor of choice and populate the `STATION_ID` and `STATION_KEY` fields with the appropriate values from your Weather Underground Weather Station: 
 
 	class Config:
     	# Weather Underground
@@ -90,7 +94,7 @@ The main application file, `weather_station.py` has two configuration settings t
 	# specifies how often to measure values from the DHT22 (in minutes)
 	MEASUREMENT_INTERVAL = 10  # minutes
 
-The MEASUREMENT_INTERVAL variable controls how often the application reads temperature measurements from the sensor. To change how often the application checks temperature values, change the value on the right of the equals sign on the second line.
+The `MEASUREMENT_INTERVAL` variable controls how often the application reads temperature measurements from the sensor. To change how often the application checks temperature values, change the value on the right of the equals sign on the second line.
 
 If you’re testing the application and don’t want the weather data uploaded to Weather Underground until you're ready, change the value for `WEATHER_UPLOAD` to `True` (case matters, so it has to be `True`, not `true`):
 
@@ -108,7 +112,7 @@ To execute the data collection application, open a terminal window, navigate to 
 The terminal window should quickly sprout the following output:
 
 	########################################
-	# Pi Weather Station                   #
+	# Pi Weather Station (Simple Sensor)   #
 	# By John M. Wargo (www.johnwargo.com) #
 	########################################
 	
