@@ -41,7 +41,8 @@ MEASUREMENT_INTERVAL = 10  # minutes
 # Set to True to enable upload of weather data to Weather Underground
 WEATHER_UPLOAD = False
 # the weather underground URL used to upload weather data
-WU_URL = "http://weatherstation.wunderground.com/weatherstation/updateweatherstation.php"
+#WU_URL = "http://weatherstation.wunderground.com/weatherstation/updateweatherstation.php"
+WU_URL = "http://rtupdate.wunderground.com/weatherstation/updateweatherstation.php"
 # some string constants
 SINGLE_HASH = "#"
 HASHES = "########################################"
