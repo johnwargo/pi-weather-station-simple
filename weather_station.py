@@ -4,7 +4,7 @@
     By John M. Wargo
     www.johnwargo.com
 
-    This is a Raspberry Pi project that measures enviromnment values (temperature and humidity ) using
+    This is a Raspberry Pi project that measures environment values (temperature and humidity ) using
     the a DHT22 Temperature sensor then uploads the data to a Weather Underground weather station.
 
     This application uses the Adafruit Python libraries for the DHT22 from:
